@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    font-family: Droid-Serif, serif;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #151D36;
+}
+
+.topnav a {
+    float: left;
+    color: grey;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topnav a:hover {
+    color: #d3d3d3;
+}
+
+.topnav a.active {
+    color: lightgray;
+}
+
+body {
+    background-color: #151D36;
+}
+
+.banner {
+    margin: auto;
+    width: 80%;
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.banner .buttons {
+    position: absolute;
+    top: 90%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* .banner .buttons:hover {
+    background-color: black;
+} */
+
+#githubBtn {
+    left: 5.6%;
+    top: 89%;
+    width: 33px;
+    height: 50px;
+    background-color: transparent;
+}
+
+#facebookBtn {
+    left: 13%;
+    top: 89%;
+    width: 33px;
+    height: 50px;
+    background-color: transparent;
+}
+
+#linkedInBtn {
+    left: 20.6%;
+    top: 89%;
+    width: 33px;
+    height: 50px;
+    background-color: transparent;
+}
