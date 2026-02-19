@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link rel="stylesheet" href="siteStyle.css">
-    <script src="functions.js"></script> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zach Rankin | Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="client.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="./resume.html">Resum&eacute</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-    </div>
+    <div id="app">
+        <div id="navBar">
+            <button class="navItem" :class="{ active: selectedBannerKey === eachKey }" v-for="eachKey in bannerKeys"
+                :key="eachKey" @click="setActiveName(eachKey)">
+                {{ eachKey }}
+            </button>
+        </div>
 
-    <div class="banner">
-        <img src="./assets/imDeveloper.png" style="width:100%" usemap="bannerMap">
-        <button id="githubBtn" class="buttons" onclick="goToPage('https://github.com/RankinZ')"></button>
-        <button id="facebookBtn" class="buttons" onclick="goToPage('https://www.facebook.com/zachary.rankin.56/')"></button>
-        <button id="linkedInBtn" class="buttons" onclick="goToPage('https://www.linkedin.com/in/zachary-rankin-a84092243/')"></button>
+        <div id="contentArea">
+            <component :is="selectedBannerKey"></component>
+        </div>
     </div>
 </body>
 
-</html>5
+</html>
