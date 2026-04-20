@@ -1,41 +1,45 @@
 const app = Vue.createApp({
-    data() {
-        return {
-            bannerKeys: ['Home', 'Resume', 'Contact', 'About'],
-            selectedBannerKey: 'Home'
-        };
-    },
-    methods: {
-        setActiveName(name) {
-            this.selectedBannerKey = name;
-        }
+  data() {
+    return {
+      bannerKeys: ['Home', 'Resume', 'Contact', 'About'],
+      selectedBannerKey: 'Home'
+    };
+  },
+  methods: {
+    setActiveName(name) {
+      this.selectedBannerKey = name;
     }
+  }
 });
 
-// Each "page" content
+// Each "page's" content
 app.component('Home', {
-    template: `<div id="mainContentArea">
+  template: `<div id="mainContentArea">
             <div id="innerContent">
                 <div id="leftClm">
+                    <p></p>
                     <h1>Hi, I'm <span>Zach Rankin</span><br />Software Developer</h1>
                     <p>
                         I build clean, performant software and enjoy working across
                         full-stack systems, algorithms, and modern web technologies.
                     </p>
-                    <!-- <div id="btnArea">
-                        <button @click="goToSite('github')"><img src="./assets/gitIcon.png" /></button>
-                        <button @click="goToSite('linkedIn')"><img src="./assets/linkedInGray.png" /></button>
-                        <button @click="goToSite('facebook')"><img src="./assets/facebookIcon.png" /></button>
-                    </div> -->
+                    <div class="aboutCard" id="landingCard">
+                      <h3>Best Skills On</h3>
+                      <div id="hList">
+                        <img class="landingIcon" src="./assets/cppLogo.png" alt="C++ Logo"/>
+                        <img class="landingIcon" src="./assets/csLogoOld.png" alt="C# Logo"/>
+                        <img class="landingIcon" src="./assets/javaLogo.png" alt="Java Logo"/>
+                        <img class="landingIcon" src="./assets/pythonLogo.png" alt="Python Logo"/>
+                      </div>
+                    </div>
                 </div>
                 <img class="profile" src="./assets/me.jpg" alt="Zach Rankin" />
             </div>
         </div>`
 });
 
-
 app.component('Resume', {
-    template: `    <div class="pdfWrapper">
+  template: `    <div class="pdfWrapper">
       <iframe
         src="./assets/Resume_Zach_Rankin.pdf"
         title="Resume PDF"
@@ -46,7 +50,7 @@ app.component('Resume', {
 });
 
 app.component('Contact', {
-    template: `
+  template: `
     <section class="contactPage">
       <div class="contactLeft">
         <h2>Let’s connect</h2>
@@ -68,8 +72,8 @@ app.component('Contact', {
       <div class="contactRight">
         <div class="contactCard">
           <span>Email</span>
-          <a href="mailto:zacharytrankin@gmail.com">
-            ZacharyTRankin@gmail.com
+          <a href="mailto:zach.t.rankin@gmail.com">
+            zach.t.rankin@gmail.com
           </a>
         </div>
 
@@ -97,7 +101,7 @@ app.component('Contact', {
 });
 
 app.component('About', {
-    template: `
+  template: `
     <section class="aboutPage">
 
       <!-- Top intro -->
