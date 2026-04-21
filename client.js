@@ -101,6 +101,82 @@ app.component('Contact', {
 });
 
 app.component('About', {
+  data() {
+    return {
+      images: [
+        './assets/gradPhoto.jpg',
+        './assets/truckAtCLB.JPG',
+        './assets/meEaster2026.jpeg'
+      ],
+      selectedIndex: 0,
+      touchStartX: 0,
+      intervalId: null
+    };
+  },
+
+  computed: {
+    selectedImage() {
+      return this.images[this.selectedIndex];
+    }
+  },
+
+  methods: {
+    setImage(index) {
+      this.selectedIndex = index;
+      this.restartAutoCycle();
+    },
+
+    nextImage() {
+      this.selectedIndex = (this.selectedIndex + 1) % this.images.length;
+    },
+
+    prevImage() {
+      this.selectedIndex =
+        (this.selectedIndex - 1 + this.images.length) % this.images.length;
+    },
+
+    startAutoCycle() {
+      this.intervalId = setInterval(() => {
+        this.nextImage();
+      }, 4000); // 4 seconds
+    },
+
+    stopAutoCycle() {
+      clearInterval(this.intervalId);
+    },
+
+    restartAutoCycle() {
+      this.stopAutoCycle();
+      this.startAutoCycle();
+    },
+
+    handleTouchStart(e) {
+      this.touchStartX = e.touches[0].clientX;
+      this.stopAutoCycle(); // pause while swiping
+    },
+
+    handleTouchEnd(e) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = this.touchStartX - touchEndX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) this.nextImage();
+        else this.prevImage();
+      }
+
+      this.startAutoCycle(); // resume after swipe
+    }
+  },
+
+  mounted() {
+    this.startAutoCycle();
+  },
+
+  beforeUnmount() {
+    this.stopAutoCycle();
+  },
+
+
   template: `
     <section class="aboutPage">
 
@@ -120,7 +196,36 @@ app.component('About', {
         </div>
 
         <div class="aboutImage">
-          <img src="./assets/gradPhoto.jpg" alt="Graduation photo of Zach Rankin." />
+          <!-- Left arrow -->
+          <button class="arrow left" @click="prevImage">‹</button>
+
+          <!-- Main image -->
+          <transition name="fade" mode="out-in">
+            <img 
+              :key="selectedImage"
+              :src="selectedImage"
+              class="mainImage"
+              @touchstart="handleTouchStart"
+              @touchend="handleTouchEnd"
+              @mouseenter="stopAutoCycle"
+              @mouseleave="startAutoCycle"
+            />
+          </transition>
+
+          <!-- Right arrow -->
+          <button class="arrow right" @click="nextImage">›</button>
+
+          <!-- Thumbnails -->
+          <div class="thumbnailRow">
+            <img 
+              v-for="(img, index) in images" 
+              :key="img"
+              :src="img"
+              class="thumb"
+              :class="{ activeThumb: selectedIndex === index }"
+              @click="setImage(index)"
+            />
+          </div>
         </div>
       </div>
 
