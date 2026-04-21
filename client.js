@@ -109,9 +109,9 @@ app.component('About', {
         <div class="aboutText">
           <h2>About Me</h2>
           <p>
-            I’m a Master's degree student at Northern Michigan University. 
+            I’m pursuing Master's degree at Northern Michigan University in CS. 
             I have a strong interest in building clean, readable, and reliable code. 
-            My major fields of interest are in Algorithms, Full-Stack development, and in Complexity Theory. 
+            My major fields of interest are in Algorithms, Full-Stack development, and Complexity Theory. 
           </p>
           <p>
             I care about writing understandable code, solving problems, 
@@ -155,7 +155,7 @@ app.component('About', {
         <div class="aboutTextWide">
           <h3>Beyond the Code</h3>
           <p>
-            Outside of programming, I enjoy learning new skills, reading, practicing what I know. 
+            Outside of programming, I enjoy learning new skills, reading, and practicing the trumpet. 
             I am always looking for chances to grow — through collaboration, courses, or projects.
           </p>
         </div>
